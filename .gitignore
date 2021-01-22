@@ -1,0 +1,4 @@
+node_modules/
+token.json
+nohup.out
+output.log
