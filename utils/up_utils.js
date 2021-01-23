@@ -1,12 +1,12 @@
-const { exit } = require('process');
+const { exit } = require(`process`);
 
 function reboot() {
-	require('../main').destroy();
+	require(`../main`).destroy();
 	exit(5);
 }
 
 function shutdown() {
-	require('../main').destroy();
+	require(`../main`).destroy();
 	exit(0);
 }
 

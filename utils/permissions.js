@@ -7,15 +7,15 @@ module.exports = {
 	getName: function(permissionNumber) {
 		switch(permissionNumber) {
 		case 0:
-			return 'no';
+			return `no`;
 		case 1:
-			return 'whitelist';
+			return `whitelist`;
 		case 2:
-			return 'admin';
+			return `admin`;
 		case 3:
-			return 'dev';
+			return `dev`;
 		default:
-			return 'invalid number';
+			return `invalid number`;
 		}
 	},
 };

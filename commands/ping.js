@@ -1,11 +1,11 @@
-const permissions = require('../utils/permissions');
+const permissions = require(`../utils/permissions`);
 
 module.exports = {
-	name: 'ping',
-	description: 'tests if the bot is online',
-	usage: '`ping`. No arguments',
+	name: `ping`,
+	description: `tests if the bot is online`,
+	usage: `\`ping\`. No arguments`,
 	permission: permissions.NONE,
 	execute(message, _args) {
-		return message.reply('pong');
+		return message.reply(`pong`);
 	},
 };

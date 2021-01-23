@@ -10,7 +10,7 @@ function getUserFromMention(mention) {
 }
 
 function getUserFromId(id) {
-	return require('../main').users.cache.get(id);
+	return require(`../main`).users.cache.get(id);
 }
 
 function getIdFromMention(mention) {

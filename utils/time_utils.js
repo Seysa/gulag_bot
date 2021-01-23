@@ -1,22 +1,26 @@
 function format(_seconds) {
-	const days = Math.floor(_seconds / (3600*24)); // Max number of days = depends, so whatever
-	const hours = Math.floor(_seconds/ (60 * 60) % 24); // Max number of hours = 24
-	const minutes = Math.floor(_seconds / 60 % 60); // Max number of minutes = 60
-	const seconds = Math.floor(_seconds % 60); // Max number of seconds = 60
+	// Max number of days = depends, so whatever
+	const days = Math.floor(_seconds / (3600 * 24));
+	// Max number of hours = 24
+	const hours = Math.floor(_seconds / (60 * 60) % 24);
+	// Max number of minutes = 60
+	const minutes = Math.floor(_seconds / 60 % 60);
+	// Max number of seconds = 60
+	const seconds = Math.floor(_seconds % 60);
 
-	let result = '';
+	let result = ``;
 
-	if(days){
-		result += days + 'd ';
+	if(days) {
+		result += days + `d `;
 	}
 	if(hours) {
-		result += hours + 'h ';
+		result += hours + `h `;
 	}
 	if(minutes) {
-		result += minutes + 'm ';
+		result += minutes + `m `;
 	}
 	if(seconds) {
-		result += seconds + 's';
+		result += seconds + `s`;
 	}
 
 	return result;

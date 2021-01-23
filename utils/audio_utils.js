@@ -1,11 +1,11 @@
-const { getRandomInt } = require('./message_utils');
+const { getRandomInt } = require(`./message_utils`);
 
 function joinAndPlayAudio(voiceChannel, audioName, onStart, onFinish) {
 	const currentVoiceChannel = voiceChannel.join();
 	currentVoiceChannel.then(connection => {
 		const currentAudio = connection.play(`audios/${audioName}`);
-		currentAudio.on('start', onStart);
-		currentAudio.on('finish', () => {
+		currentAudio.on(`start`, onStart);
+		currentAudio.on(`finish`, () => {
 			currentAudio.destroy();
 			if (voiceChannel) {
 				voiceChannel.leave();
@@ -18,11 +18,11 @@ function joinAndPlayAudio(voiceChannel, audioName, onStart, onFinish) {
 function joinAndPlayAudioFromMessage(message, audioName, onStart, onFinish) {
 	const channel = message.guild.me.voice.channel;
 	if (channel) {
-		return message.reply('Already in a channel, please disconnect me first');
+		return message.reply(`Already in a channel, please disconnect me first`);
 	}
 
 	if(message.member.voice.channel === null) {
-		return message.reply('You are not in a voice channel');
+		return message.reply(`You are not in a voice channel`);
 	}
 
 	joinAndPlayAudio(message.member.voice.channel, audioName, onStart, onFinish);
@@ -32,7 +32,7 @@ function launchFartAt(message, channelOfUser, times) {
 	const currentVoiceChannel = channelOfUser.join();
 	currentVoiceChannel.then(connection => {
 		const currentAudio = connection.play(`audios/farts/fart_${getRandomInt(5) + 1}.mp3`);
-		currentAudio.on('finish', () => {
+		currentAudio.on(`finish`, () => {
 			times = times - 1;
 			if (currentAudio) { currentAudio.destroy(); }
 			if (times) {

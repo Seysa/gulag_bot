@@ -1,12 +1,12 @@
-const { hasLetters, getUserFromId } = require('./message_utils');
-const permissions = require('./permissions');
-const fs = require('fs');
-const { userInWhiteList } = require('./config_utils');
+const { hasLetters } = require(`./message_utils`);
+const permissions = require(`./permissions`);
+const fs = require(`fs`);
+const { userInWhiteList } = require(`./config_utils`);
 
 function getCommands() {
 	const collection = new Map();
 
-	const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+	const commandFiles = fs.readdirSync(`./commands`).filter(file => file.endsWith(`.js`));
 
 	for (const file of commandFiles) {
 		const command = require(`../commands/${file}`);
@@ -17,7 +17,7 @@ function getCommands() {
 }
 
 function getLongestCommandSize() {
-	const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith(('.js'))).map(filename => filename.slice(0, -3));
+	const commandFiles = fs.readdirSync(`./commands`).filter(file => file.endsWith((`.js`))).map(filename => filename.slice(0, -3));
 	let longestName = 0;
 	for(const filename of commandFiles) {
 		if(filename.length > longestName) {
@@ -38,7 +38,7 @@ function logPrivateMessage(message) {
 	const d = new Date();
 	message = `[${d.toLocaleDateString()} @ ${d.toLocaleTimeString()}]${message}`;
 	console.log(message);
-	fs.appendFileSync('logs/private.log', `${message}\n`, 'utf8');
+	fs.appendFileSync(`logs/private.log`, `${message}\n`, `utf8`);
 }
 
 async function parseAndTryCommand(message, commands, command, args) {
@@ -47,22 +47,21 @@ async function parseAndTryCommand(message, commands, command, args) {
 		return;
 	}
 	try {
-		timeLog(message, `=${command} ${args.join(' ')}`);
+		timeLog(message, `=${command} ${args.join(` `)}`);
 		const clientCommand = commands.get(command);
 		if (getLevelOfPermissionOfUser(message) >= clientCommand.permission) {
-			console.log('| executing');
+			console.log(`| executing`);
 			clientCommand.execute(message, args);
 		}
 		else {
-			console.log('| not executing');
+			console.log(`| not executing`);
 		}
 	}
 	catch (error) {
 		console.error(error);
-		message.reply('there was an error trying to execute that command!');
-		const me = getUserFromId('180044865067810816');
-		if(command === 'calc') {
-			message.channel.send('' + error);
+		message.reply(`there was an error trying to execute that command!`);
+		if(command === `calc`) {
+			message.channel.send(`` + error);
 		}
 	}
 }
@@ -81,14 +80,14 @@ function isAmongUsCode(string) {
 }
 
 function isMe(user_id) {
-	return user_id === '180044865067810816';
+	return user_id === `180044865067810816`;
 }
 
 function getLevelOfPermissionOfUser(message) {
 	if (isMe(message.author.id)) {
 		return permissions.ME;
 	}
-	else if (message.member.hasPermission('ADMINISTRATOR')) {
+	else if (message.member.hasPermission(`ADMINISTRATOR`)) {
 		return permissions.ADMIN;
 	}
 	else if (userInWhiteList(message.guild.id, message.author.id)) {

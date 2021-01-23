@@ -1,10 +1,10 @@
-const permissions = require('../utils/permissions');
-const { getCommands } = require('../utils/main_utils');
+const permissions = require(`../utils/permissions`);
+const { getCommands } = require(`../utils/main_utils`);
 
 module.exports = {
-	name: 'usage',
-	description: 'shows how to use command given in parameter (not yet implemented)',
-	usage: '`usage`. No arguments',
+	name: `usage`,
+	description: `shows how to use command given in parameter (not yet implemented)`,
+	usage: `\`usage\`. No arguments`,
 	permission: permissions.NONE,
 	execute(message, args) {
 		if(args[0]) {
@@ -15,11 +15,11 @@ module.exports = {
 				message.channel.send(commandUsage);
 			}
 			else {
-				message.reply('Couldn\'t find this command');
+				message.reply(`Couldn't find this command`);
 			}
 		}
 		else {
-			message.reply('This command needs a parameter, the command for which you want to know the usage');
+			message.reply(`This command needs a parameter, the command for which you want to know the usage`);
 		}
 	},
 };

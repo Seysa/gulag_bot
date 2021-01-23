@@ -1,17 +1,17 @@
-const fs = require('fs');
+const fs = require(`fs`);
 
 // GETTERS
 
 function getConfigObject() {
-	return JSON.parse(fs.readFileSync('config/config.json', 'utf8'));
+	return JSON.parse(fs.readFileSync(`config/config.json`, `utf8`));
 }
 
 function writeConfigObject(object) {
-	fs.writeFileSync('config/config.json', JSON.stringify(object, null, '\t'), 'utf8');
+	fs.writeFileSync(`config/config.json`, JSON.stringify(object, null, `\t`), `utf8`);
 }
 
 function getToken() {
-	return JSON.parse(fs.readFileSync('./token.json', 'utf8')).token;
+	return JSON.parse(fs.readFileSync(`./token.json`, `utf8`)).token;
 }
 
 function getFromServer(config_object, server_id, attribute) {
@@ -43,22 +43,22 @@ function getFromNewServer(server_id, attribute) {
 }
 
 function changeAmongUsCode(server_id, code) {
-	const newObject = modifyInServer(server_id, 'amongUsCode', code);
+	const newObject = modifyInServer(server_id, `amongUsCode`, code);
 	writeConfigObject(newObject);
 }
 
 
 function getAmongUsCode(server_id) {
-	const amongUsCode = getFromNewServer(server_id, 'amongUsCode');
+	const amongUsCode = getFromNewServer(server_id, `amongUsCode`);
 	if (amongUsCode) {
 		return `Code is __**${amongUsCode}**__`;
 	}
-	return 'No AmongUs code registered for this server yet';
+	return `No AmongUs code registered for this server yet`;
 }
 
 // from server
 function userInWhiteList(server_id, user_id) {
-	const serverWhiteList = getFromNewServer(server_id, 'whitelist');
+	const serverWhiteList = getFromNewServer(server_id, `whitelist`);
 	if (!serverWhiteList) {
 		return false;
 	}
@@ -107,13 +107,13 @@ function addServerToConfig(server_id, server_name) {
 			'servers': [{
 				'name': server_name,
 				'id': server_id,
-				'prefix': '=',
+				'prefix': `=`,
 				'amongUsCode': {
-					'code': '',
+					'code': ``,
 
 				},
 				'whitelist': [],
-				'goulagChannelId': '0',
+				'goulagChannelId': `0`,
 
 			}],
 		};
@@ -123,14 +123,14 @@ function addServerToConfig(server_id, server_name) {
 	const toAdd = {
 		'name': server_name,
 		'id': server_id,
-		'prefix': '=',
+		'prefix': `=`,
 		'amongUsCode': {
-			'code': '',
-			'time': '',
+			'code': ``,
+			'time': ``,
 
 		},
 		'whitelist': [],
-		'goulagChannelId': '0',
+		'goulagChannelId': `0`,
 
 	};
 	configObject.servers.push(toAdd);
@@ -156,7 +156,7 @@ function removeInWhiteListById(server_id, user_id) {
 	const myConfig = getConfigObject();
 	for (const server of myConfig.servers) {
 		if (server.id === server_id) {
-			server.whitelist = removeByAttr(server.whitelist, 'id', user_id);
+			server.whitelist = removeByAttr(server.whitelist, `id`, user_id);
 			writeConfigObject(myConfig);
 			return true;
 		}
@@ -165,7 +165,7 @@ function removeInWhiteListById(server_id, user_id) {
 }
 
 function getServerGoulagId(server_id) {
-	return getFromNewServer(server_id, 'goulagChannelId');
+	return getFromNewServer(server_id, `goulagChannelId`);
 }
 
 function writeServerGoulagId(server_id, goulag_id) {
