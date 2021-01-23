@@ -14,7 +14,7 @@ module.exports = {\n\
 \tdescription: 'not yet implemented',\n\
 \tusage: '',\n\
 \tpermission: permissions.ME,\n\
-\texecute(message, _args) {\n\
+\tasync execute(message, _args) {\n\
 \t\tmessage.reply('Command " + command + " is not implemented yet');\n\
 \t},\n\
 };\n"
