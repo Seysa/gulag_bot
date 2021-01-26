@@ -4,7 +4,7 @@
 			"name": "La Boite",
 			"id": "666712268528025638",
 			"prefix": "=",
-			"amongUsCode": "DOUZOS",
+			"amongUsCode": "",
 			"whitelist": [
 				{
 					"name": "Garion Le gros BG",
@@ -82,7 +82,7 @@
 			"name": "Serveur de Garion",
 			"id": "798899763168280627",
 			"prefix": "=",
-			"amongUsCode": "AZEAZE",
+			"amongUsCode": "",
 			"whitelist": [],
 			"goulagChannelId": "798899982853603368"
 		},
