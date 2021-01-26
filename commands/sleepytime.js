@@ -1,4 +1,5 @@
 const permissions = require(`../utils/permissions`);
+const { safeDelete } = require(`../utils/message_utils`);
 
 module.exports = {
 	name: `sleepytime`,
@@ -6,6 +7,7 @@ module.exports = {
 	usage: ``,
 	permission: permissions.ME,
 	execute(message, _args) {
+		safeDelete(message);
 		message.reply(`Command sleepytime is not implemented yet`);
 	},
 };

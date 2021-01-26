@@ -1,6 +1,6 @@
-const { getUserFromMention } = require(`../utils/message_utils`);
-const { launchFartAt } = require(`../utils/audio_utils`);
+const { audioCommandHandler } = require(`../utils/audio_utils`);
 const permissions = require(`../utils/permissions`);
+const { getRandomInt } = require(`../utils/message_utils`);
 
 
 module.exports = {
@@ -11,42 +11,7 @@ module.exports = {
 		`The 'victim' needs to be in a voice channel`,
 	permission: permissions.NONE,
 	execute(message, args) {
-		const channel = message.guild.me.voice.channel;
-		if (channel) {
-			message.delete();
-			return;
-		}
-		let channelOfUser = undefined;
-		if (args[0]) {
-			const targetedUser = message.guild.members.resolve(getUserFromMention(args[0]));
-			if (!targetedUser) {
-				return message.reply(`Couldn't find user you tagged`);
-			}
-			channelOfUser = targetedUser.voice.channel;
-			if (!channelOfUser) {
-				return message.reply(`Target is not in a voice channel`);
-			}
-		}
-		else {
-			channelOfUser = message.member.voice.channel;
-			if (!channelOfUser) {
-				return message.reply(`You are not in a voice channel`);
-			}
-		}
-		message.delete();
-
-		let times = 1;
-		if (args[1]) {
-			times = parseInt(args[1]);
-			// if letters and couldnt parse any int
-			if (!times) {
-				return message.reply(`Invalid parameter ` + args[1]);
-			}
-			if (times < 0 || times > 10) {
-				return message.reply(`Invalid times (must be over 0 or under 10)`);
-			}
-		}
-
-		launchFartAt(message, channelOfUser, times);
+		const fartFile = `farts/fart_${getRandomInt(5) + 1}.mp3`;
+		audioCommandHandler(message, args, fartFile);
 	},
 };

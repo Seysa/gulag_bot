@@ -1,5 +1,5 @@
 const { addInWhiteList, removeInWhiteListById, getFromNewServer } = require(`../utils/config_utils`);
-const { getUserFromMention } = require(`../utils/message_utils`);
+const { getUserFromMention, safeDelete } = require(`../utils/message_utils`);
 const permissions = require(`../utils/permissions`);
 
 module.exports = {
@@ -12,6 +12,7 @@ module.exports = {
 		`__List__: \`whitelist list\`. Shows the names of everyone in the whitelist.`,
 	permission: permissions.WHITELIST,
 	execute(message, args) {
+		safeDelete(message);
 		if (args[0]) {
 			if (args[0] === `add`) {
 				if (args[1]) {

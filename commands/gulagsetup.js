@@ -1,12 +1,14 @@
 const cfg = require(`../utils/config_utils`);
 const permissions = require(`../utils/permissions`);
+const { safeDelete } = require(`../utils/message_utils`);
 
 module.exports = {
-	name: `goulagsetup`,
+	name: `gulagsetup`,
 	description: `setups the goulag channel`,
 	usage: `\`goulagsetup here\` for the bot to assign the current voice channel as the goulag channel, where the goulag command will place them in, or \`goulagsetup <voice_channel_id>\``,
 	permission: permissions.WHITELIST,
 	execute(message, args) {
+		safeDelete(message);
 		if (args[0]) {
 			if (args[0] === `here`) {
 				const userInGuild = message.guild.members.resolve(message.author.id);

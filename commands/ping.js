@@ -6,6 +6,6 @@ module.exports = {
 	usage: `\`ping\`. No arguments`,
 	permission: permissions.NONE,
 	execute(message, _args) {
-		return message.reply(`pong`);
+		message.reply(`pong`);
 	},
 };

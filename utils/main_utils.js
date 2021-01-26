@@ -50,8 +50,8 @@ async function parseAndTryCommand(message, commands, command, args) {
 		timeLog(message, `=${command} ${args.join(` `)}`);
 		const clientCommand = commands.get(command);
 		if (getLevelOfPermissionOfUser(message) >= clientCommand.permission) {
-			console.log(`| executing`);
 			clientCommand.execute(message, args);
+			console.log(`| executing`);
 		}
 		else {
 			console.log(`| not executing`);

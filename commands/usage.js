@@ -1,5 +1,6 @@
 const permissions = require(`../utils/permissions`);
 const { getCommands } = require(`../utils/main_utils`);
+const { safeDelete } = require(`../utils/message_utils`);
 
 module.exports = {
 	name: `usage`,
@@ -7,6 +8,7 @@ module.exports = {
 	usage: `\`usage\`. No arguments`,
 	permission: permissions.NONE,
 	execute(message, args) {
+		safeDelete(message);
 		if(args[0]) {
 			const commands = getCommands();
 			if(commands.has(args[0])) {

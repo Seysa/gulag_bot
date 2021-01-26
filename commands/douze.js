@@ -1,4 +1,5 @@
 const permissions = require(`../utils/permissions`);
+const { safeDelete } = require(`../utils/message_utils`);
 
 module.exports = {
 	name: `douze`,
@@ -6,6 +7,7 @@ module.exports = {
 	usage: `\`douze <times>\`. This command needs an argument, which is the number of times you want the bot to write '12'. Argument is a number between 0 and 144`,
 	permission: permissions.NONE,
 	execute(message, args) {
+		safeDelete(message);
 		const upperLimit = 144;
 		const max = parseInt(args[0]);
 		let result = ``;

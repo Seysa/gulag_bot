@@ -1,3 +1,12 @@
+function safeDelete(message) {
+	try {
+		message.delete();
+	}
+	catch (e) {
+		console.log(e);
+	}
+}
+
 function getUserFromMention(mention) {
 	// The id is the first and only match found by the RegEx.
 	const matches = mention.match(/^<@!?(\d+)>$/);
@@ -35,4 +44,5 @@ module.exports = {
 	hasLetters:hasLetters,
 	getRandomInt:getRandomInt,
 	getUserFromId:getUserFromId,
+	safeDelete:safeDelete,
 };

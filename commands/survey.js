@@ -1,5 +1,6 @@
 const permissions = require(`../utils/permissions`);
 const Discord = require(`discord.js`);
+const { safeDelete } = require(`../utils/message_utils`);
 
 module.exports = {
 	name: `survey`,
@@ -7,6 +8,7 @@ module.exports = {
 	usage: `\`survey <Question>\``,
 	permission: permissions.NONE,
 	async execute(message, args) {
+		safeDelete(message);
 		if(!args[0]) {
 			return message.reply(`The survey needs a question as an argument`);
 		}
@@ -15,7 +17,7 @@ module.exports = {
 			.setTitle(args.join(` `))
 			.setAuthor(`Question by ` + message.author.username)
 			.setTimestamp()
-			.setFooter(`Goulag bot survey`);
+			.setFooter(`Gulag bot survey`);
 
 		const sentMessage = (await message.channel.send(exampleEmbed));
 		sentMessage.react(`👍`);

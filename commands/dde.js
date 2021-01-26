@@ -1,11 +1,13 @@
 const permissions = require(`../utils/permissions`);
-const { hasLetters, getRandomInt } = require(`../utils/message_utils`);
+const { hasLetters, getRandomInt, safeDelete } = require(`../utils/message_utils`);
+
 module.exports = {
 	name: `dde`,
 	description: `rolls dices`,
 	usage: `\`dde <number_of_faces> <number_of_dice_rolls>\`\nNumber of faces is a number between 2 and 50'000; Number of dice rolls is a number between 1 and 100`,
 	permission: permissions.NONE,
 	execute(message, args) {
+		safeDelete(message);
 		let diceOf = 12;
 		if (args[0]) {
 			const argValue = parseInt(args[0]);

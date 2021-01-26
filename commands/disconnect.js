@@ -1,4 +1,5 @@
 const permissions = require(`../utils/permissions`);
+const { safeDelete } = require(`../utils/message_utils`);
 
 module.exports = {
 	name: `disconnect`,
@@ -6,10 +7,13 @@ module.exports = {
 	usage: `\`disconnect\`. Bot needs to be in a voice channel. This command may not work if the bot crashed recently, in this case the bot will disconnect by himself after some time`,
 	permission: permissions.WHITELIST,
 	execute(message, _args) {
+		safeDelete(message);
 		const channel = message.guild.me.voice.channel;
 		if (channel) {
-			message.channel.send(`Leaving channel "${channel.name}"`);
 			channel.leave();
+		}
+		else {
+			message.channel.send(`I am not in a voice channel`);
 		}
 	},
 };

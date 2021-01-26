@@ -1,4 +1,5 @@
 const permissions = require(`../utils/permissions`);
+const { safeDelete } = require(`../utils/message_utils`);
 
 module.exports = {
 	name: `myid`,
@@ -6,6 +7,7 @@ module.exports = {
 	usage: `\`myid\`. No arguments`,
 	permission: permissions.NONE,
 	execute(message, _args) {
-		message.channel.send(`Your id is ` + message.author.id);
+		safeDelete(message);
+		message.reply(`Your id is ` + message.author.id);
 	},
 };

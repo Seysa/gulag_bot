@@ -1,5 +1,4 @@
 // Import discord.js and create the client
-
 const Discord = require(`discord.js`);
 const {
 	getToken,
@@ -15,6 +14,7 @@ const {
 	timeLog,
 	isAmongUsCode,
 	getCommands,
+	safeDelete,
 } = require(`./utils/main_utils`);
 
 
@@ -37,7 +37,7 @@ client.on(`message`, async (message) => {
 	}
 
 	if (isAmongUsCode(message.content)) {
-		await message.delete();
+		await safeDelete(message);
 		changeAmongUsCode(message.guild.id, message.content);
 		console.log(`|`);
 		timeLog(message, `entered AmongUs code: ${message.content}\n`);
@@ -115,7 +115,7 @@ function destroyBot() {
 		client.destroy();
 	}
 	else {
-		require(`process`).exit();
+		process.exit();
 	}
 }
 

@@ -1,13 +1,22 @@
-const { exit } = require(`process`);
+const { exec } = require(`child_process`);
+const os = require(`os`);
 
 function reboot() {
-	require(`../main`).destroy();
-	exit(5);
+	if(os.platform() === `linux`) {
+		exec(`sudo systemctl restart gulag-bot`);
+	}
+	else {
+		process.exit(0);
+	}
 }
 
 function shutdown() {
-	require(`../main`).destroy();
-	exit(0);
+	if(os.platform() === `linux`) {
+		exec(`sudo systemctl stop gulag-bot`);
+	}
+	else {
+		process.exit(0);
+	}
 }
 
 module.exports = {

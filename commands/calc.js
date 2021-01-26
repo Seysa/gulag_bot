@@ -9,22 +9,18 @@ function tokenize(code) {
 	return results;
 }
 
-function isNumber(token) {
-	return token !== undefined && token.match(/^[0-9]+$/) !== null;
-}
-
-function isName(token) {
-	return token !== undefined && token.match(/^[A-Za-z]+$/) !== null;
-}
 
 function parse(code) {
-	let tokens;
-	if(typeof code === `string`) {
-		tokens = tokenize(code);
+
+	function isNumber(token) {
+		return token !== undefined && token.match(/^[0-9]+$/) !== null;
 	}
-	else {
-		tokens = code;
+
+	function isName(token) {
+		return token !== undefined && token.match(/^[A-Za-z]+$/) !== null;
 	}
+
+	const tokens = tokenize(code);
 	let position = 0;
 
 	function peek() {

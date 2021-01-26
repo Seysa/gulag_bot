@@ -1,5 +1,6 @@
 const permissions = require(`../utils/permissions`);
 const { shutdown } = require(`../utils/up_utils`);
+const { safeDelete } = require(`../utils/message_utils`);
 
 module.exports = {
 	name: `shutdown`,
@@ -7,9 +8,7 @@ module.exports = {
 	usage: `\`shutdown\`. No arguments`,
 	permission: permissions.ME,
 	async execute(message, _args) {
-		if(message) {
-			await message.delete();
-		}
+		await safeDelete(message);
 		shutdown();
 	},
 };
