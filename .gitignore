@@ -2,3 +2,4 @@ node_modules/
 token.json
 nohup.out
 output.log
+crash_report.log
