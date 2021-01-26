@@ -5,7 +5,6 @@ function joinAndPlayAudio(message, audioName) {
 	const currentVoiceChannel = message.member.voice.channel.join();
 	currentVoiceChannel.then(connection => {
 		const currentAudio = connection.play(`audios/${audioName}`);
-		console.log(currentAudio);
 		currentAudio.on(`finish`, () => {
 			const channel = message.guild.me.voice.channel;
 			if (channel) {
