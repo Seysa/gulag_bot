@@ -1,5 +1,6 @@
 // Import discord.js and create the client
 const Discord = require(`discord.js`);
+const { safeDelete } = require(`./utils/message_utils`);
 const {
 	getToken,
 	getAmongUsCode,
@@ -14,7 +15,6 @@ const {
 	timeLog,
 	isAmongUsCode,
 	getCommands,
-	safeDelete,
 } = require(`./utils/main_utils`);
 
 
@@ -37,7 +37,7 @@ client.on(`message`, async (message) => {
 	}
 
 	if (isAmongUsCode(message.content)) {
-		await safeDelete(message);
+		safeDelete(message);
 		changeAmongUsCode(message.guild.id, message.content);
 		console.log(`|`);
 		timeLog(message, `entered AmongUs code: ${message.content}\n`);
