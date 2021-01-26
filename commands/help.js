@@ -47,7 +47,7 @@ module.exports = {
 
 		resultMessage += `\nIf you have any feedback, feel free to DM Garion#5133\n` +
         `(invite link is https://tinyurl.com/y2w9kwxp)\n` +
-        `source code is available at \`https://github.com/Seysa/gulag_bot\``;
+        `source code is available at https://github.com/Seysa/gulag_bot`;
 
 		// TODO: center command names?
 
