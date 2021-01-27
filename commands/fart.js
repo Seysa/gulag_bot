@@ -7,7 +7,6 @@ module.exports = {
 	name: `fart`,
 	description: `makes the bot fart into your channel`,
 	usage: `\`fart\` to make the bot fart into your voice channel, \`fart @user\` to make the bot fart in the voice channel of the user.\n` +
-		`\`fart @user <times>\` to make the bot fart the given number of times in tagged user's voice channel.\n` +
 		`The 'victim' needs to be in a voice channel`,
 	permission: permissions.NONE,
 	execute(message, args) {

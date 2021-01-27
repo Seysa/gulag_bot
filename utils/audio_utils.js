@@ -1,8 +1,7 @@
-const { getRandomInt, safeDelete } = require(`./message_utils`);
-const { getUserFromMention } = require(`../utils/message_utils`);
+const { safeDelete, getIdFromMention } = require(`./message_utils`);
 
-function joinAndPlayAudio(message, audioName) {
-	const currentVoiceChannel = message.member.voice.channel.join();
+function joinAndPlayAudio(message, voiceChannel, audioName) {
+	const currentVoiceChannel = voiceChannel.join();
 	currentVoiceChannel.then(connection => {
 		const currentAudio = connection.play(`audios/${audioName}`);
 		currentAudio.on(`finish`, () => {
@@ -17,67 +16,37 @@ function joinAndPlayAudio(message, audioName) {
 	});
 }
 
-function joinAndPlayAudioFromMessage(message, audioName) {
+function audioCommandHandler(message, args, audioName) {
+	safeDelete(message);
+
+	// If bot is already in a voice channel
 	const channel = message.guild.me.voice.channel;
 	if (channel) {
 		return message.reply(`Already in a channel, please disconnect me first`);
 	}
 
-	if(message.member.voice.channel === null) {
-		return message.reply(`You are not in a voice channel`);
-	}
-
-	joinAndPlayAudio(message, audioName);
-}
-
-function audioCommandHandler(message, args, audioName) {
-	safeDelete(message);
-	const channel = message.guild.me.voice.channel;
-	if (channel) {
-		return;
-	}
-	let channelOfUser = undefined;
+	// If there is an argument, it's a tagged user
 	if (args[0]) {
-		const targetedUser = message.guild.members.resolve(getUserFromMention(args[0]));
-		if (!targetedUser) {
-			return message.reply(`Couldn't find user you tagged`);
+		const taggedId = getIdFromMention(args[0]) || args[0];
+		const user = message.guild.members.resolve(taggedId);
+		if(!user) {
+			return message.reply(`Couldn't find the user you specified, try again`);
 		}
-		channelOfUser = targetedUser.voice.channel;
-		if (!channelOfUser) {
-			return message.reply(`Target is not in a voice channel`);
-		}
+		joinAndPlayAudio(message, user.voice.channel, audioName);
 	}
+	// else join author
 	else {
-		channelOfUser = message.member.voice.channel;
-		if (!channelOfUser) {
+		const voiceChannel = message.member.voice.channel;
+		if(voiceChannel === null) {
 			return message.reply(`You are not in a voice channel`);
 		}
+		else {
+			joinAndPlayAudio(message, message.member.voice.channel, audioName);
+		}
 	}
-	joinAndPlayAudioFromMessage(message, audioName);
-}
-
-function launchFartAt(message, channelOfUser, times) {
-	const currentVoiceChannel = channelOfUser.join();
-	currentVoiceChannel.then(connection => {
-		const currentAudio = connection.play(`audios/farts/fart_${getRandomInt(5) + 1}.mp3`);
-		currentAudio.on(`finish`, () => {
-			times = times - 1;
-			if (currentAudio) { currentAudio.destroy(); }
-			if (times) {
-				// eslint-disable-next-line no-unused-vars
-				launchFartAt(message, channelOfUser, times);
-			}
-			else {
-				const channel = message.guild.me.voice.channel;
-				if (channel) { channel.leave(); }
-			}
-		});
-	});
 }
 
 module.exports = {
 	joinAndPlayAudio:joinAndPlayAudio,
-	joinAndPlayAudioFromMessage:joinAndPlayAudioFromMessage,
-	launchFartAt:launchFartAt,
 	audioCommandHandler:audioCommandHandler,
 };

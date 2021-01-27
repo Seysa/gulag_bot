@@ -33,11 +33,7 @@ module.exports = {
 			if (isAVoiceChannel) {
 				await goulaged.voice.setChannel(goulagServerId);
 				await goulaged.voice.channel.join();
-				joinAndPlayAudio(goulaged.voice.channel, `goulaged.mp3`, () => {
-					message.channel.send(`GULAG`);
-				}, () => {
-					message.channel.send(`GULAGED`);
-				});
+				joinAndPlayAudio(message, goulaged.voice.channel, `goulaged.mp3`);
 			}
 			else {
 				message.reply(`Can't find voice channel`);

@@ -10,33 +10,27 @@ module.exports = {
 	execute(message, args) {
 		safeDelete(message);
 		if (args[0]) {
-			if (args[0] === `here`) {
-				const userInGuild = message.guild.members.resolve(message.author.id);
-				const voiceId = userInGuild.voice.channelID;
-				if (voiceId) {
-					cfg.writeServerGoulagId(message.guild.id, voiceId);
-					return message.channel.send(`Goulag channel set at your location (` + userInGuild.voice.channel.name + `)`);
-				}
-				else {
-					return message.reply(`You are not in a voice channel`);
-				}
+			// Try to resolve channel id in the server to check if it is a valid ID, if it returns something its valid
+			const channel = message.guild.channels.resolve(args[0]);
+			// is an ID
+			if (channel) {
+				message.reply(`Goulag channel is now '${channel.name}'`);
+				cfg.writeServerGoulagId(message.guild.id, args[0]);
 			}
 			else {
-				// Try to resolve channel id in the server to check if it is a valid ID, if it returns something its valid
-				const channel = message.guild.channels.resolve(args[0]);
-				// is an ID
-				if (channel) {
-					message.reply(`Goulag channel is now '${channel.name}'`);
-					cfg.writeServerGoulagId(message.guild.id, args[0]);
-				}
-				else {
-					return message.reply(`Couldn't identify voice channel id`);
-				}
+				return message.reply(`Couldn't identify voice channel id`);
 			}
 		}
 		else {
-			return message.reply(`You need to specify an argument: here | <channel_id>`);
+			const userInGuild = message.guild.members.resolve(message.author.id);
+			const voiceId = userInGuild.voice.channelID;
+			if (voiceId) {
+				cfg.writeServerGoulagId(message.guild.id, voiceId);
+				return message.channel.send(`Goulag channel set at your location (` + userInGuild.voice.channel.name + `)`);
+			}
+			else {
+				return message.reply(`You are not in a voice channel`);
+			}
 		}
-		return;
 	},
 };

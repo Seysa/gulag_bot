@@ -84,6 +84,7 @@ client.on(`ready`, () => {
 	});
 	console.log(`----------------`);
 	client.user.setActivity(`=help | =usage <command>`);
+	client.user.setActivity(`debugging, bot is not available`);
 });
 
 

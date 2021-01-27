@@ -7,6 +7,22 @@ function safeDelete(message) {
 	}
 }
 
+function parseMessage(message) {
+	let prefix = require(`./config_utils`).getFromNewServer(message.guild.id, `prefix`);
+	if (!prefix) {
+		prefix = `=`;
+		const client = require(`../main`);
+		console.log(`Couldn't load prefix for the server ${client.guilds.resolve(message.guild.id).name}`);
+	}
+	const split = message.content.slice(prefix.length).split(/ +/);
+	const command = split[0].toLowerCase();
+	const args = split.slice(1);
+	return {
+		"command":command,
+		"args":args,
+	};
+}
+
 function getUserFromMention(mention) {
 	// The id is the first and only match found by the RegEx.
 	const matches = mention.match(/^<@!?(\d+)>$/);
@@ -45,4 +61,5 @@ module.exports = {
 	getRandomInt:getRandomInt,
 	getUserFromId:getUserFromId,
 	safeDelete:safeDelete,
+	parseMessage:parseMessage,
 };
