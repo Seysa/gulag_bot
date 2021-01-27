@@ -31,17 +31,16 @@ module.exports = {
 			}
 			const isAVoiceChannel = message.guild.channels.resolve(goulagServerId);
 			if (isAVoiceChannel) {
+				const ancientVoice = goulaged.voice.channel;
 				await goulaged.voice.setChannel(goulagServerId);
-				await goulaged.voice.channel.join();
-				joinAndPlayAudio(message, goulaged.voice.channel, `goulaged.mp3`);
+				joinAndPlayAudio(message, goulaged.voice.channel, `goulaged.mp3`, () => {goulaged.voice.setChannel(ancientVoice);});
 			}
 			else {
-				message.reply(`Can't find voice channel`);
+				return message.reply(`Can't find voice channel`);
 			}
 		}
 		else {
-			message.reply(`You need to specify an argument : user`);
+			return message.reply(`You need to specify an argument : user`);
 		}
-		return;
 	},
 };
