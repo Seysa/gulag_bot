@@ -12,10 +12,10 @@ module.exports = {
 		try {
 			const data = fs.readFileSync(`output.log`, `utf8`);
 			if(!data) {
-				message.channel.send(`log file is empty`);
+				await message.channel.send(`log file is empty`);
 			}
 			else {
-				message.channel.send(data);
+				await message.channel.send(data);
 			}
 		}
 		catch(e) {
