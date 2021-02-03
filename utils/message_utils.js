@@ -1,4 +1,4 @@
-function safeDelete(message) {
+async function safeDelete(message) {
 	try {
 		await message.delete();
 	}
