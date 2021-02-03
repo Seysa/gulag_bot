@@ -7,7 +7,7 @@ module.exports = {
 	description: `Shows all server logs`,
 	usage: `\`log. No arguments\``,
 	permission: permissions.ME,
-	async execute(message, _args) {
+	async execute(client, message, _args) {
 		safeDelete(message);
 		try {
 			const data = fs.readFileSync(`output.log`, `utf8`);

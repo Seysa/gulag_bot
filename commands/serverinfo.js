@@ -7,7 +7,7 @@ module.exports = {
 	description: `gives current server info the bot has`,
 	usage: `\`serverinfo\`. No arguments`,
 	permission: permissions.WHITELIST,
-	execute(message, _args) {
+	execute(client, message, _args) {
 		safeDelete(message);
 		const config = cfg.getConfigObject();
 		for (const server of config.servers) {

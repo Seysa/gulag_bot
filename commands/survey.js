@@ -7,7 +7,7 @@ module.exports = {
 	description: `Creates a survey`,
 	usage: `\`survey <Question>\``,
 	permission: permissions.NONE,
-	async execute(message, args) {
+	async execute(client, message, args) {
 		safeDelete(message);
 		if(!args[0]) {
 			return message.reply(`The survey needs a question as an argument`);

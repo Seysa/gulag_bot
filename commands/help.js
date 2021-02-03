@@ -9,7 +9,7 @@ module.exports = {
 	description: `displays bot help`,
 	usage: `\`help\` to display bot help`,
 	permission: permissions.NONE,
-	execute(message, args) {
+	execute(client, message, args) {
 		safeDelete(message);
 		const permArray = [];
 		let resultMessage = ``;

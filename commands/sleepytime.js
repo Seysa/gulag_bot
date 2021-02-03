@@ -6,7 +6,7 @@ module.exports = {
 	description: `not yet implemented`,
 	usage: ``,
 	permission: permissions.ME,
-	execute(message, _args) {
+	execute(client, message, _args) {
 		safeDelete(message);
 		message.reply(`Command sleepytime is not implemented yet`);
 	},

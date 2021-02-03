@@ -6,7 +6,7 @@ module.exports = {
 	description: `12`,
 	usage: `\`douze <times>\`. This command needs an argument, which is the number of times you want the bot to write '12'. Argument is a number between 0 and 144`,
 	permission: permissions.NONE,
-	execute(message, args) {
+	execute(client, message, args) {
 		safeDelete(message);
 		const upperLimit = 144;
 		const max = parseInt(args[0]);

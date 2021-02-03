@@ -7,7 +7,7 @@ module.exports = {
 	description: `reboots bot`,
 	usage: `\`reboot\`. No arguments`,
 	permission: permissions.ME,
-	async execute(message, _args) {
+	async execute(client, message, _args) {
 		await safeDelete(message);
 		reboot();
 	},

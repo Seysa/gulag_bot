@@ -5,7 +5,7 @@ module.exports = {
 	description: `Prints given python output`,
 	usage: `\`python <command>\`. Command can be any valid python syntax.`,
 	permission: permissions.NONE,
-	execute(message, args) {
+	execute(client, message, args) {
 		if(!args[0]) {
 			return message.reply(`An operation is needed as an argument`);
 		}

@@ -5,7 +5,9 @@ module.exports = {
 	description: `tests if the bot is online`,
 	usage: `\`ping\`. No arguments`,
 	permission: permissions.NONE,
-	execute(message, _args) {
-		message.reply(`pong`);
+	async execute(client, message, _args) {
+		const msg = await message.channel.send(`🏓 Pinging....`);
+		msg.edit(`🏓 Pong!
+        Ping is ${Math.round(client.ws.ping)}ms`);
 	},
 };

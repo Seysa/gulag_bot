@@ -7,7 +7,7 @@ module.exports = {
 	description: `shows how to use command given in parameter (not yet implemented)`,
 	usage: `\`usage\`. No arguments`,
 	permission: permissions.NONE,
-	execute(message, args) {
+	execute(client, message, args) {
 		safeDelete(message);
 		if(args[0]) {
 			const commands = getCommands();

@@ -2,7 +2,6 @@
 const Discord = require(`discord.js`);
 const { safeDelete } = require(`./utils/message_utils`);
 const {
-	getToken,
 	getAmongUsCode,
 	getFromNewServer,
 	changeAmongUsCode,
@@ -16,11 +15,15 @@ const {
 	isAmongUsCode,
 	getCommands,
 } = require(`./utils/main_utils`);
+const {
+	setConnected,
+	tryToLogin,
+	destroyBot,
+} = require(`./utils/up_utils`);
 
 
 const client = new Discord.Client();
 const commands = getCommands();
-let connected = false;
 
 // Register an event to handle incoming messages
 client.on(`message`, async (message) => {
@@ -66,7 +69,7 @@ client.on(`message`, async (message) => {
 	console.log(`|`);
 	// TypeScript?
 	try {
-		await parseAndTryCommand(message, commands, command, args);
+		await parseAndTryCommand(client, message, commands, command, args);
 	}
 	catch(e) {
 		console.log(`Error catched in main: ` + e);
@@ -74,8 +77,9 @@ client.on(`message`, async (message) => {
 
 });
 
+
 client.on(`ready`, () => {
-	connected = true;
+	setConnected(true);
 	console.log(`Logged in as ${client.user.tag}`);
 	console.log(`I am logged on ${client.guilds.cache.size} server(s)`);
 	client.guilds.cache.forEach((guild) => {
@@ -106,31 +110,14 @@ client.on(`guildDelete`, (guild) => {
 
 });
 
-tryToLogin();
+tryToLogin(client);
 
 module.exports = client;
 
-function destroyBot() {
-	if(connected) {
-		client.destroy();
-	}
-	else {
-		process.exit();
-	}
-}
-
-function tryToLogin() {
-	console.log(`Trying to login...`);
-	client.login(getToken()).catch(() => {
-		const seconds = 30;
-		console.log(`Failed, retrying in ${seconds}s...`);
-		setTimeout(tryToLogin, seconds * 1000);
-	});
-}
 
 for(const sig of [`SIGTERM`, `SIGINT`]) {
 	process.on(sig, () => {
 		console.log(sig + ` received, exiting`);
-		destroyBot();
+		destroyBot(client);
 	});
 }

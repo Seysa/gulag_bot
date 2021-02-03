@@ -6,7 +6,7 @@ module.exports = {
 	description: `Gets the avatar of the tagged user`,
 	usage: `\`avatar\` to get your own avatar or \`avatar @user\` to get the avatar of the tagged user`,
 	permission: permissions.NONE,
-	execute(message, args) {
+	async execute(client, message, args) {
 		safeDelete(message);
 		if (args[0]) {
 			const user = getUserFromMention(args[0]);

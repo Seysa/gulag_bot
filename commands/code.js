@@ -7,7 +7,7 @@ module.exports = {
 	description: `shows Among Us code`,
 	usage: `\`code\`. It is used to get last among Us code written in the server`,
 	permission: permissions.NONE,
-	execute(message, _args) {
+	execute(client, message, _args) {
 		safeDelete(message);
 		message.channel.send(getAmongUsCode(message.guild.id));
 	},

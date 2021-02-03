@@ -152,7 +152,7 @@ module.exports = {
 	description: `Performs an operation on the given argument`,
 	usage: `\`calc <operation>\`. Operation cannot contain letters.`,
 	permission: permissions.NONE,
-	execute(message, args) {
+	execute(client, message, args) {
 		if(!args[0]) {
 			return message.reply(`An operation is needed as an argument`);
 		}

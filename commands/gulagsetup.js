@@ -7,7 +7,7 @@ module.exports = {
 	description: `setups the goulag channel`,
 	usage: `\`goulagsetup here\` for the bot to assign the current voice channel as the goulag channel, where the goulag command will place them in, or \`goulagsetup <voice_channel_id>\``,
 	permission: permissions.WHITELIST,
-	execute(message, args) {
+	execute(client, message, args) {
 		safeDelete(message);
 		if (args[0]) {
 			// Try to resolve channel id in the server to check if it is a valid ID, if it returns something its valid

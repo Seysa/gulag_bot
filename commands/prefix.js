@@ -8,7 +8,7 @@ module.exports = {
 	description: `(is supposed to change prefix, not yet implemented)`,
 	usage: `\`prefix <new_prefix>\`. It changes the current prefix to new_prefix. new_prefix needs to be symbols only, min 1 character and max 3 characters`,
 	permission: permissions.ME,
-	execute(message, args) {
+	execute(client, message, args) {
 		const configObject = cfg.getConfigObject();
 		let currentPrefix = cfg.getFromServer(configObject, message.guild.id, `prefix`);
 		if (args[0]) {

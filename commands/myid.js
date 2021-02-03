@@ -6,7 +6,7 @@ module.exports = {
 	description: `shows user id`,
 	usage: `\`myid\`. No arguments`,
 	permission: permissions.NONE,
-	execute(message, _args) {
+	execute(client, message, _args) {
 		safeDelete(message);
 		message.reply(`Your id is ` + message.author.id);
 	},

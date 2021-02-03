@@ -9,7 +9,7 @@ module.exports = {
 	description: `puts the tagged user in the goulag channel and blasts russian music for him`,
 	usage: `\`gulag @user\`. user needs to be a in voice channel`,
 	permission: permissions.WHITELIST,
-	async execute(message, args) {
+	async execute(client, message, args) {
 		safeDelete(message);
 		const channel = message.guild.me.voice.channel;
 		if (channel) {

@@ -7,7 +7,7 @@ module.exports = {
 	description: `Gives current server temperature`,
 	usage: `\`temp\`. No arguments`,
 	permission: permissions.ME,
-	execute(message, _args) {
+	execute(client, message, _args) {
 		safeDelete(message);
 		exec(`vcgencmd measure_temp`, (err, stdout, _stderr) => {
 			if(err) {

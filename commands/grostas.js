@@ -6,7 +6,7 @@ module.exports = {
 	description: `makes the bot say gros tas`,
 	usage: `\`grostas\` or \`grostas @user\`. Yourself or your target needs to be in a voice channel`,
 	permission: permissions.NONE,
-	async execute(message, args) {
+	async execute(client, message, args) {
 		audioCommandHandler(message, args, `grostas.mp3`);
 	},
 };

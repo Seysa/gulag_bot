@@ -11,7 +11,7 @@ module.exports = {
 		`__Clear__: \`whitelist clear\`. Removes everyone in the whitelist. You need to be administrator to clear the whitelist.\n` +
 		`__List__: \`whitelist list\`. Shows the names of everyone in the whitelist.`,
 	permission: permissions.WHITELIST,
-	execute(message, args) {
+	execute(client, message, args) {
 		safeDelete(message);
 		if (args[0]) {
 			if (args[0] === `add`) {

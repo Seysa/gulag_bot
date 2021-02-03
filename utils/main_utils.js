@@ -41,7 +41,7 @@ function logPrivateMessage(message) {
 	fs.appendFileSync(`logs/private.log`, `${message}\n`, `utf8`);
 }
 
-async function parseAndTryCommand(message, commands, command, args) {
+async function parseAndTryCommand(client, message, commands, command, args) {
 	if (!commands.has(command)) {
 		timeLog(message, `No command ${command}\n`);
 		return;
@@ -50,7 +50,7 @@ async function parseAndTryCommand(message, commands, command, args) {
 		timeLog(message, `=${command} ${args.join(` `)}`);
 		const clientCommand = commands.get(command);
 		if (getLevelOfPermissionOfUser(message) >= clientCommand.permission) {
-			clientCommand.execute(message, args);
+			await clientCommand.execute(client, message, args);
 			console.log(`| executing`);
 		}
 		else {
