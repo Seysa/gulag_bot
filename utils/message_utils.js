@@ -1,6 +1,6 @@
 function safeDelete(message) {
 	try {
-		message.delete();
+		await message.delete();
 	}
 	catch (e) {
 		console.log(e);

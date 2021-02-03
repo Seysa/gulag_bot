@@ -4,7 +4,7 @@
 			"name": "La Boite",
 			"id": "666712268528025638",
 			"prefix": "=",
-			"amongUsCode": "DOUZOS",
+			"amongUsCode": "",
 			"whitelist": [
 				{
 					"name": "Garion Le gros BG",
@@ -54,7 +54,7 @@
 			"name": "Forsaken Adventures Campaign",
 			"id": "745678110741102654",
 			"prefix": "=",
-			"amongUsCode": "PAIDIA",
+			"amongUsCode": "",
 			"whitelist": [],
 			"goulagChannelId": "783331969290469476"
 		},
