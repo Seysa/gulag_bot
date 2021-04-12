@@ -40,9 +40,7 @@ client.on(`message`, async (message) => {
 	}
 
 	if (isAmongUsCode(message.content)) {
-		safeDelete(message);
 		changeAmongUsCode(message.guild.id, message.content);
-		console.log(`|`);
 		timeLog(message, `entered AmongUs code: ${message.content}\n`);
 		return message.channel.send(getAmongUsCode(message.guild.id));
 	}
@@ -66,7 +64,6 @@ client.on(`message`, async (message) => {
 	const command = split[0].toLowerCase();
 	const args = split.slice(1);
 
-	console.log(`|`);
 	// TypeScript?
 	try {
 		await parseAndTryCommand(client, message, commands, command, args);

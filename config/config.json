@@ -26,31 +26,6 @@
 			"goulagChannelId": "780345560590712863"
 		},
 		{
-			"name": "𝑳𝒂 𝒗𝒊𝒆",
-			"id": "475979509871542273",
-			"prefix": "=",
-			"amongUsCode": "",
-			"whitelist": [
-				{
-					"name": "RaymanSbal#1262",
-					"id": "239097344224657408"
-				},
-				{
-					"name": "Mondher#6262",
-					"id": "694557206745579543"
-				},
-				{
-					"name": "Enzo SEKKAI#7290",
-					"id": "294927464168161280"
-				},
-				{
-					"name": "KHALEDYD IT#7502",
-					"id": "517374560258097183"
-				}
-			],
-			"goulagChannelId": "687769508064395331"
-		},
-		{
 			"name": "Forsaken Adventures Campaign",
 			"id": "745678110741102654",
 			"prefix": "=",
@@ -71,8 +46,13 @@
 			"id": "656163599924068363",
 			"prefix": "=",
 			"amongUsCode": "",
-			"whitelist": [],
-			"goulagChannelId": "778745033897410601"
+			"whitelist": [
+				{
+					"name": "Hakazu#6960",
+					"id": "208258418576850945"
+				}
+			],
+			"goulagChannelId": "656163599924068373"
 		},
 		{
 			"name": "Méga Murge",
@@ -97,6 +77,14 @@
 			"amongUsCode": "",
 			"whitelist": [],
 			"goulagChannelId": "0"
+		},
+		{
+			"name": "The tale of the four gods",
+			"id": "823999835325726731",
+			"prefix": "=",
+			"amongUsCode": "",
+			"whitelist": [],
+			"goulagChannelId": "824230562586689606"
 		}
 	]
 }

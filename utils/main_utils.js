@@ -1,7 +1,7 @@
 const { hasLetters } = require(`./message_utils`);
 const permissions = require(`./permissions`);
 const fs = require(`fs`);
-const { userInWhiteList } = require(`./config_utils`);
+const { userInWhiteList, getFromNewServer } = require(`./config_utils`);
 
 function getCommands() {
 	const collection = new Map();
@@ -31,7 +31,7 @@ function getLongestCommandSize() {
 function timeLog(message, content) {
 	const d = new Date();
 	const time = `${d.toLocaleDateString()} @ ${d.toLocaleTimeString()}`;
-	process.stdout.write(`[${time}][${message.guild.name}][${message.channel.name}][${message.author.tag}] ${content} `);
+	process.stdout.write(`[${time}][${message.guild.name}][${message.channel.name}][${message.author.tag}] ${content}`);
 }
 
 function logPrivateMessage(message) {
@@ -44,14 +44,19 @@ function logPrivateMessage(message) {
 async function parseAndTryCommand(client, message, commands, command, args) {
 	if (!commands.has(command)) {
 		timeLog(message, `No command ${command}\n`);
+		let prefix = getFromNewServer(message.guild.id, `prefix`);
+		if(!prefix) {
+			prefix = `=`;
+		}
+		message.channel.send(`No command \`${command}\`, use \`${prefix}help\` to see my commands`);
 		return;
 	}
 	try {
 		timeLog(message, `=${command} ${args.join(` `)}`);
 		const clientCommand = commands.get(command);
 		if (getLevelOfPermissionOfUser(message) >= clientCommand.permission) {
-			await clientCommand.execute(client, message, args);
 			console.log(`| executing`);
+			await clientCommand.execute(client, message, args);
 		}
 		else {
 			console.log(`| not executing`);
