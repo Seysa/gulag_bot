@@ -1,0 +1,69 @@
+Trying to login...
+Logged in as KGBOT#7007
+I am logged on 9 server(s)
+- V ?
+- 𝑳𝒂 𝒗𝒊𝒆
+- Flemme Appel
+- La Boite
+- Forsaken Adventures Campaign
+- Méga Murge
+- KGBOT DEV
+- Serveur de vinsam33
+- Serveur de Garion
+----------------
+|
+[08/02/2021 @ 23:27:26][La Boite][musique][ioritz#3696] =macron  | executing
+|
+[09/02/2021 @ 08:51:36][Serveur de Garion][général][Garion#5133] =calc 32*7 | executing
+|
+[09/02/2021 @ 10:17:10][Serveur de Garion][général][Garion#5133] =log  | executing
+|
+[09/02/2021 @ 13:56:00][Flemme Appel][musique][Garion#5133] =whitelist  | executing
+|
+[09/02/2021 @ 13:56:03][Flemme Appel][musique][Garion#5133] =whitelist list | executing
+|
+[09/02/2021 @ 13:56:09][Flemme Appel][musique][Garion#5133] =whitelist add @Hakazu | executing
+|
+[09/02/2021 @ 17:17:50][𝑳𝒂 𝒗𝒊𝒆][bot][Enzo SEKKAI#7290] No command goulag
+ |
+[09/02/2021 @ 17:18:06][𝑳𝒂 𝒗𝒊𝒆][bot][Enzo SEKKAI#7290] =help  | executing
+|
+[09/02/2021 @ 17:18:15][𝑳𝒂 𝒗𝒊𝒆][bot][Mondher#6262] No command maison
+ |
+[09/02/2021 @ 17:18:33][𝑳𝒂 𝒗𝒊𝒆][bot][Enzo SEKKAI#7290] =gulag <@!694557206745579543> | executing
+|
+[09/02/2021 @ 17:19:48][𝑳𝒂 𝒗𝒊𝒆][bot][Enzo SEKKAI#7290] =gulag <@!658032683212865549> | executing
+|
+[09/02/2021 @ 21:58:06][La Boite][général][Valoukanga#3189] entered AmongUs code: DIHUIT
+ |
+[10/02/2021 @ 00:32:18][Serveur de Garion][général][Garion#5133] =log  | executing
+|
+[10/02/2021 @ 19:21:50][Serveur de Garion][général][Garion#5133] =log  | executing
+|
+[08/02/2021 @ 23:27:26][La Boite][musique][ioritz#3696] =macron  | executing
+|
+[09/02/2021 @ 08:51:36][Serveur de Garion][général][Garion#5133] =calc 32*7 | executing
+|
+[09/02/2021 @ 10:17:10][Serveur de Garion][général][Garion#5133] =log  | executing
+|
+[09/02/2021 @ 13:56:00][Flemme Appel][musique][Garion#5133] =whitelist  | executing
+|
+[09/02/2021 @ 13:56:03][Flemme Appel][musique][Garion#5133] =whitelist list | executing
+|
+[09/02/2021 @ 13:56:09][Flemme Appel][musique][Garion#5133] =whitelist add @Hakazu | executing
+|
+[09/02/2021 @ 17:17:50][𝑳𝒂 𝒗𝒊𝒆][bot][Enzo SEKKAI#7290] No command goulag
+ |
+[09/02/2021 @ 17:18:06][𝑳𝒂 𝒗𝒊𝒆][bot][Enzo SEKKAI#7290] =help  | executing
+|
+[09/02/2021 @ 17:18:15][𝑳𝒂 𝒗𝒊𝒆][bot][Mondher#6262] No command maison
+ |
+[09/02/2021 @ 17:18:33][𝑳𝒂 𝒗𝒊𝒆][bot][Enzo SEKKAI#7290] =gulag <@!694557206745579543> | executing
+|
+[09/02/2021 @ 17:19:48][𝑳𝒂 𝒗𝒊𝒆][bot][Enzo SEKKAI#7290] =gulag <@!658032683212865549> | executing
+|
+[09/02/2021 @ 21:58:06][La Boite][général][Valoukanga#3189] entered AmongUs code: DIHUIT
+ |
+[10/02/2021 @ 00:32:18][Serveur de Garion][général][Garion#5133] =log  | executing
+|
+[10/02/2021 @ 19:21:50][Serveur de Garion][général][Garion#5133] =log
