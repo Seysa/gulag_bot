@@ -13,7 +13,7 @@ module.exports = {
 		safeDelete(message);
 		const channel = message.guild.me.voice.channel;
 		if (channel) {
-			return message.reply(`Already in a channel, please disconnect me first`);
+			return await message.reply(`Already in a channel, please disconnect me first`);
 		}
 		if (args[0]) {
 
@@ -21,13 +21,13 @@ module.exports = {
 
 			const goulaged = message.guild.members.resolve(goulagId);
 			if(!goulaged) {
-				return message.reply(`Couldn't find the user you specified, try again`);
+				return await message.reply(`Couldn't find the user you specified, try again`);
 			}
 
 			// to get from config
 			const goulagServerId = getServerGoulagId(message.guild.id);
 			if (goulagServerId === `0`) {
-				return message.reply(`No gulag channel defined for this server, use gulagsetup to define one`);
+				return await message.reply(`No gulag channel defined for this server, use gulagsetup to define one`);
 			}
 			const isAVoiceChannel = message.guild.channels.resolve(goulagServerId);
 			if (isAVoiceChannel) {
@@ -36,11 +36,11 @@ module.exports = {
 				joinAndPlayAudio(message, goulaged.voice.channel, `goulaged.mp3`, () => {goulaged.voice.setChannel(ancientVoice);});
 			}
 			else {
-				return message.reply(`Can't find voice channel`);
+				return await message.reply(`Can't find voice channel`);
 			}
 		}
 		else {
-			return message.reply(`You need to specify an argument : user`);
+			return await message.reply(`You need to specify an argument : user`);
 		}
 	},
 };

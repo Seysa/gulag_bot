@@ -46,7 +46,7 @@ client.on(`message`, async (message) => {
 	}
 
 	// is DOUZOS NACHOS written in the message
-	if (message.content.indexOf(`DOUZOS NACHOS`) !== -1) {
+	if (message.content.includes(`DOUZOS NACHOS`)) {
 		await message.channel.send(`Code is __**DOUZOS NACHOS**__`);
 		await message.react(`🇳`);
 		await message.react(`🇦`);

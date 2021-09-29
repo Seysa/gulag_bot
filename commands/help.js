@@ -9,7 +9,7 @@ module.exports = {
 	description: `displays bot help`,
 	usage: `\`help\` to display bot help`,
 	permission: permissions.NONE,
-	execute(client, message, args) {
+	async execute(client, message, args) {
 		safeDelete(message);
 		const permArray = [];
 		let resultMessage = ``;
@@ -51,6 +51,6 @@ module.exports = {
 
 		// TODO: center command names?
 
-		message.author.send(resultMessage);
+		await message.author.send(resultMessage);
 	},
 };

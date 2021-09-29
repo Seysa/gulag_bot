@@ -152,14 +152,14 @@ module.exports = {
 	description: `Performs an operation on the given argument`,
 	usage: `\`calc <operation>\`. Operation cannot contain letters.`,
 	permission: permissions.NONE,
-	execute(client, message, args) {
+	async execute(client, message, args) {
 		if(!args[0]) {
-			return message.reply(`An operation is needed as an argument`);
+			return await message.reply(`An operation is needed as an argument`);
 		}
 
 		const allArgs = args.join(``);
 		const object = evaluateAsFloatHistory(allArgs);
 		const result = (object.history.length > 0) ? object.history : `Result is ` + object.result;
-		message.channel.send(result);
+		await message.channel.send(result);
 	},
 };

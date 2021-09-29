@@ -11,8 +11,8 @@ module.exports = {
 		`__Clear__: \`whitelist clear\`. Removes everyone in the whitelist. You need to be administrator to clear the whitelist.\n` +
 		`__List__: \`whitelist list\`. Shows the names of everyone in the whitelist.`,
 	permission: permissions.WHITELIST,
-	execute(client, message, args) {
-		safeDelete(message);
+	async execute(client, message, args) {
+		await safeDelete(message);
 		if (args[0]) {
 			if (args[0] === `add`) {
 				if (args[1]) {
@@ -20,18 +20,18 @@ module.exports = {
 					if (mentionedUser) {
 						const added = addInWhiteList(message.guild.id, mentionedUser.user.tag, mentionedUser.id);
 						if (added) {
-							message.channel.send(`${mentionedUser.user.username} was added to the whitelist`);
+							await message.channel.send(`${mentionedUser.user.username} was added to the whitelist`);
 						}
 						else {
-							message.reply(`${mentionedUser.user.username} is already in the whitelist`);
+							await message.reply(`${mentionedUser.user.username} is already in the whitelist`);
 						}
 					}
 					else {
-						message.reply(`Couldn't identify the user`);
+						await message.reply(`Couldn't identify the user`);
 					}
 				}
 				else {
-					message.reply(`You need to mention the user you want to add to the whitelist`);
+					await message.reply(`You need to mention the user you want to add to the whitelist`);
 				}
 			}
 			else if (args[0] === `remove`) {
@@ -40,10 +40,10 @@ module.exports = {
 					if (mentionedUser) {
 						const removed = removeInWhiteListById(message.guild.id, mentionedUser.id);
 						if (removed) {
-							message.channel.send(`${mentionedUser.user.username} was removed from the whitelist`);
+							await message.channel.send(`${mentionedUser.user.username} was removed from the whitelist`);
 						}
 						else {
-							message.reply(`${mentionedUser.user.username} is not in the whitelist`);
+							await message.reply(`${mentionedUser.user.username} is not in the whitelist`);
 						}
 					}
 				}
@@ -55,10 +55,10 @@ module.exports = {
 					for (const user of whitelist) {
 						result += `\n\t- ${user.name}`;
 					}
-					message.channel.send(result);
+					await message.channel.send(result);
 				}
 				else {
-					message.reply(`Whitelist is empty`);
+					await message.reply(`Whitelist is empty`);
 				}
 			}
 			else if (args[0] === `clear`) {
@@ -66,18 +66,18 @@ module.exports = {
 					for (const user of getFromNewServer(message.guild.id, `whitelist`)) {
 						removeInWhiteListById(message.guild.id, user.id);
 					}
-					message.channel.send(`Whitelist is now empty`);
+					await message.channel.send(`Whitelist is now empty`);
 				}
 				else {
-					message.reply(`You need to be server administrator to clear the whitelist`);
+					await message.reply(`You need to be server administrator to clear the whitelist`);
 				}
 			}
 			else {
-				message.reply(`Invalid argument, try one of those: add | remove | list | clear`);
+				await message.reply(`Invalid argument, try one of those: add | remove | list | clear`);
 			}
 		}
 		else {
-			message.reply(`You need to specify an argument: add | remove | list | clear`);
+			await message.reply(`You need to specify an argument: add | remove | list | clear`);
 		}
 	},
 };

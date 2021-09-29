@@ -6,8 +6,8 @@ module.exports = {
 	description: `rolls dices`,
 	usage: `\`dde <number_of_faces> <number_of_dice_rolls>\`\nNumber of faces is a number between 2 and 50'000; Number of dice rolls is a number between 1 and 100`,
 	permission: permissions.NONE,
-	execute(client, message, args) {
-		safeDelete(message);
+	async execute(client, message, args) {
+		await safeDelete(message);
 		let diceOf = 12;
 		if (args[0]) {
 			const argValue = parseInt(args[0]);
@@ -15,7 +15,7 @@ module.exports = {
 				diceOf = argValue;
 			}
 			else {
-				return message.reply(`First argument is the number of faces of the dice, which is a number between 2 and 50'000`);
+				return await message.reply(`First argument is the number of faces of the dice, which is a number between 2 and 50'000`);
 			}
 		}
 		if (args[1]) {
@@ -25,14 +25,14 @@ module.exports = {
 					result += ` ` + (getRandomInt(diceOf) + 1);
 				}
 				const messageToSend = `Output for dice with ${diceOf} faces ${parseInt(args[1])} times:\n\`\`\`${result}\`\`\``;
-				return message.channel.send(messageToSend);
+				return await message.channel.send(messageToSend);
 			}
 			else {
-				return message.reply(`Second argument is the number of rolls, which is a number between 1 and 100`);
+				return await message.reply(`Second argument is the number of rolls, which is a number between 1 and 100`);
 			}
 		}
 
 		const messageToSend = `Output for dice with ${diceOf} faces:\n${getRandomInt(diceOf) + 1}`;
-		return message.channel.send(messageToSend);
+		return await message.channel.send(messageToSend);
 	},
 };

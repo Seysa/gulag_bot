@@ -6,8 +6,8 @@ module.exports = {
 	description: `12`,
 	usage: `\`douze <times>\`. This command needs an argument, which is the number of times you want the bot to write '12'. Argument is a number between 0 and 144`,
 	permission: permissions.NONE,
-	execute(client, message, args) {
-		safeDelete(message);
+	async execute(client, message, args) {
+		await safeDelete(message);
 		const upperLimit = 144;
 		const max = parseInt(args[0]);
 		let result = ``;
@@ -15,10 +15,10 @@ module.exports = {
 			for (let i = 0; i < max; i++) {
 				result += `12\n`;
 			}
-			message.channel.send(result);
+			await message.channel.send(result);
 		}
 		else {
-			message.reply(`First argument must be a number (more than 0 and less or equal than ${upperLimit})`);
+			await message.reply(`First argument must be a number (more than 0 and less or equal than ${upperLimit})`);
 		}
 	},
 };

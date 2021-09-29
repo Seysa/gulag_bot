@@ -7,14 +7,14 @@ module.exports = {
 	description: `Gives current server temperature`,
 	usage: `\`temp\`. No arguments`,
 	permission: permissions.ME,
-	execute(client, message, _args) {
-		safeDelete(message);
-		exec(`vcgencmd measure_temp`, (err, stdout, _stderr) => {
+	async execute(client, message, _args) {
+		await safeDelete(message);
+		exec(`vcgencmd measure_temp`, async (err, stdout, _stderr) => {
 			if(err) {
 				message.reply(`Something wrong happened. Error code is ` + err);
 			}
 			const number = stdout.split(`=`)[1];
-			message.reply(`Temp is ` + number);
+			await message.reply(`Temp is ` + number);
 		});
 	},
 };

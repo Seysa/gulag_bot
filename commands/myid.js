@@ -6,8 +6,8 @@ module.exports = {
 	description: `shows user id`,
 	usage: `\`myid\`. No arguments`,
 	permission: permissions.NONE,
-	execute(client, message, _args) {
+	async execute(client, message, _args) {
 		safeDelete(message);
-		message.reply(`Your id is ` + message.author.id);
+		await message.reply(`Your id is ` + message.author.id);
 	},
 };

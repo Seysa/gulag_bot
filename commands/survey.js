@@ -8,9 +8,9 @@ module.exports = {
 	usage: `\`survey <Question>\``,
 	permission: permissions.NONE,
 	async execute(client, message, args) {
-		safeDelete(message);
+		await safeDelete(message);
 		if(!args[0]) {
-			return message.reply(`The survey needs a question as an argument`);
+			return await message.reply(`The survey needs a question as an argument`);
 		}
 		const exampleEmbed = new Discord.MessageEmbed()
 			.setColor(`#0099ff`)

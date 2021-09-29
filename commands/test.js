@@ -5,7 +5,7 @@ module.exports = {
 	description: `for test purpose`,
 	usage: `depends on the test case`,
 	permission: permissions.ME,
-	execute(client, message, _args) {
-		message.channel.send(`Nothing to see here`);
+	async execute(client, message, _args) {
+		await message.channel.send(`Nothing to see here`);
 	},
 };

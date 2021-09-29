@@ -7,14 +7,14 @@ module.exports = {
 	description: `gives current server info the bot has`,
 	usage: `\`serverinfo\`. No arguments`,
 	permission: permissions.WHITELIST,
-	execute(client, message, _args) {
+	async execute(client, message, _args) {
 		safeDelete(message);
 		const config = cfg.getConfigObject();
 		for (const server of config.servers) {
 			if (server.id === message.guild.id) {
-				return message.author.send(`\`\`\`json\n${JSON.stringify(server, null, 2)}\`\`\``);
+				return await message.author.send(`\`\`\`json\n${JSON.stringify(server, null, 2)}\`\`\``);
 			}
 		}
-		message.reply(`Your server is not configurated yet`);
+		await message.reply(`Your server is not configurated yet`);
 	},
 };

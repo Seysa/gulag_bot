@@ -9,7 +9,7 @@ module.exports = {
 	usage: `\`uptime\`. No arguments`,
 	permission: permissions.ME,
 	async execute(client, message, _args) {
-		safeDelete(message);
+		await safeDelete(message);
 		let result = ``;
 		result += `:white_check_mark: __**Server uptime:**__ ${format(os.uptime())}`;
 		result += `\n:white_check_mark: __**Program uptime**:__ ${format(process.uptime())}`;
